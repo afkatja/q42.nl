@@ -69,7 +69,7 @@ Router.map ->
       waitOn: ->
         [
           Meteor.subscribe "pagesByTag", obj.tags[0]
-          SubsManager.subscribe "blogpostIndex", 1, obj.tags[0]
+          Meteor.subscribe "blogpostIndex", 1, obj.tags[0]
           SubsManager.subscribe "LatestComments", 10
         ]
       data: ->
@@ -190,6 +190,12 @@ Router.map ->
     path: "/vacatures"
     tags: ["vacature"]
     lang: "nl"
+
+  customPageWithBlogTags
+    routeName: "iot"
+    path: "/iot"
+    tags: ["iot"]
+    lang: "en"
 
   customPageWithBlogTags
     routeName: "io"
