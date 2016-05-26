@@ -13,7 +13,7 @@ Posts._ensureIndex({tags: 1});
 const TumblrKey = Meteor.settings.public.TUMBLR_KEY;
 
 const separateTags = (tag) => {
-  return tag ? tag.split('&').map((w) => { return {tags: w}; } ) : [{}];
+  return tag ? tag.split('&').map(w => ({tags: w})) : [{}];
 };
 
 Meteor.methods({
@@ -83,7 +83,7 @@ function upsertPost(post) {
     post.intro = pos > -1 ? post.body.substring(0, pos) : post.body;
   }
   if (post.tags)
-    post.tags = post.tags.map(function(s) { return s.toLowerCase(); });
+    post.tags = post.tags.map(s => s.toLowerCase());
 
   if (!Posts.findOne({ id: post.id }))
     Posts.insert(post);
@@ -121,7 +121,7 @@ publishWithObserveChanges("blogpostTitles", (page, tag) => {
 });
 
 publishWithObserveChanges("blogpostFull", (id) => {
-  return Posts.find({ id: id }, {
+  return Posts.find({ id }, {
     fields: {
       _id: 1, authorName: 1, body: 1,
       date: 1, id: 1, intro: 1,
@@ -136,7 +136,7 @@ Meteor.publishComposite("postsWithAuthors", function(englishOnly) {
   const filter = englishOnly ? {tags: 'en'} : {};
   return [
     {
-      find: function() {
+      find() {
         return Posts.find(filter, {sort: {date: -1}, limit: 3, fields: {
           title: 1, authorName: 1, slug: 1,
           intro: 1, prettyDate: 1, id: 1,
@@ -145,7 +145,7 @@ Meteor.publishComposite("postsWithAuthors", function(englishOnly) {
       },
       children: [
         {
-          find: function(post) {
+          find(post) {
             return post.authorName ?
               Employees.find({name: post.authorName}, {limit: 1, fields:{
                 name: 1, handle: 1
@@ -166,7 +166,7 @@ Meteor.publish("pagesByTag", function(tag) {
   const tags = separateTags(tag);
 
   const handle = Posts.find({$and: tags}).observeChanges({
-    added: function () {
+    added() {
       count++;
       if (!initializing)
         self.changed("PageCounts", uuid, {
@@ -174,7 +174,7 @@ Meteor.publish("pagesByTag", function(tag) {
           count: Math.ceil(count / BLOGPOSTS_PER_PAGE)
         });
     },
-    removed: function () {
+    removed() {
       count--;
       self.changed("PageCounts", uuid, {
         tag: tag,

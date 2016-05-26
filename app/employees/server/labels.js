@@ -29,7 +29,7 @@ const roles = {
   "Ex-concullega": [
     "arjen", "sander", "bas", "guido", "jaap", "jasper", "jasperh", "johan",
     "roelfjan", "marcel", "mark", "mathijs", "michiel", "stef", "timd", "taco",
-    "wouter", "corina", "silvy", "bram"
+    "wouter", "corina", "silvy", "bram", "wouterh"
   ],
   "Ex-ex-q'er": "sjoerd laurens suzanne",
   "Ex-Fabriquer": "sander bram",
@@ -55,7 +55,7 @@ const arbitrary = {
   "Voortgeplant": [
     "martin", "chris", "mark", "kars", "bas", "cynthia", "gerard", "jaap",
     "jasper", "johan", "korjan", "michiel", "remco", "sander", "stef",
-    "suzanne", "timd", "laurens", "taco", "bart", "kamil"
+    "suzanne", "timd", "laurens", "taco", "bart", "kamil", "wouterh"
   ],
   "Rijdt soms op een motor": "stef jeroen arian tom lukas bob jasperh chris",
   "Gaat binnenkort naar Microsoft":"michiel",

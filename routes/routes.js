@@ -84,7 +84,7 @@ blogOverview.route("/page/:pageNum", {
     this.register("pages", Meteor.subscribe("pagesByTag", ""));
   }
 });
-blogOverview.route("/tagged/:tag",{
+blogOverview.route("/tagged/:tag", {
   name: "blog",
   action() { renderPage("blog"); },
   subscriptions(params) {
@@ -93,7 +93,7 @@ blogOverview.route("/tagged/:tag",{
     this.register("pages", Meteor.subscribe("pagesByTag", tag || ""));
   }
 });
-blogOverview.route("/tagged/:tag/page/:pageNum",{
+blogOverview.route("/tagged/:tag/page/:pageNum", {
   name: "blog",
   action() { renderPage("blog"); },
   subscriptions(params) {

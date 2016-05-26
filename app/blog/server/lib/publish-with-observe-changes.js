@@ -11,13 +11,13 @@ export const publishWithObserveChanges = function (name, fn) {
       return;
     }
     const handle = cursor.observeChanges({
-      added: function(id, fields) {
+      added(id, fields) {
         self.added(name, id, fields);
       },
-      changed: function(id, fields) {
+      changed(id, fields) {
         self.changed(name, id, fields);
       },
-      removed: function(id) {
+      removed(id) {
         self.removed(name, id);
       }
     });

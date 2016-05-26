@@ -4,6 +4,8 @@ import { _ } from 'meteor/underscore'
 
 import { Employees } from '../lib/shared'
 
+const employeeSort = {sort: {handle: 1}}
+
 Template.employees.helpers({
   employee() {
     const filter = Session.get("employees_filter");
@@ -23,10 +25,10 @@ Template.employees.helpers({
       }
 
     } else if (filter !== "" && filter !== "Q'er"){
-      return Employees.find({labels: {$in: [filter]}});
+      return Employees.find({labels: {$in: [filter]}}, employeeSort);
 
     } else {
-      return Employees.find();
+      return Employees.find({}, employeeSort);
     }
   },
 
@@ -34,5 +36,5 @@ Template.employees.helpers({
 });
 
 Template.en_employees && Template.en_employees.helpers({
-  employee: () => Employees.find()
+  employee: () => Employees.find({}, employeeSort)
 });

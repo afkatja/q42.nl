@@ -1,14 +1,14 @@
 {
-  "short_name": "Q42",
   "name": "Q42",
   "icons": [
     {
-      "src": "https://storage.googleapis.com/static.q42.nl/images/q42-logo-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "density": "4.0"
+      "src": "https://storage.googleapis.com/static.q42.nl/images/q42-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
+  "theme_color": "#84bc2d",
+  "background_color": "#84bc2d",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait"

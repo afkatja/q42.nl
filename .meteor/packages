@@ -36,8 +36,8 @@ fastclick
 ecmascript
 force-ssl
 tmeasday:publish-counts
-standard-minifier-css
 standard-minifier-js
 modules
 mdg:seo
 reywood:publish-composite
+juliancwirko:postcss

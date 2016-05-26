@@ -1,4 +1,4 @@
-@import "0_variables.styl"
+@import "variables.styl"
 
 body
   font 300 1rem bodyFont
@@ -68,7 +68,7 @@ a
   // opacity 0
 
   background-color #f0f3ed
-  transition transform .2s ease
+  transition transform .5s cubic-bezier(.87,-.41,.19,1.44)
   box-shadow -2px 0 20px rgba(0,0,0,.2)
   @media (min-width 480px)
     box-shadow none
@@ -114,8 +114,8 @@ a
     opacity 0
     width 128px
     animation fadeIn ease .2s
-    animationDelay .5s
-    animationFillMode forwards
+    animation-delay .5s
+    animation-fill-mode forwards
 
 .block-readmore
   text-align center
@@ -140,6 +140,77 @@ a
   @media (max-width 480px)
     width 90%
     min-width 300px
+
+  // we need to apply position: relative or the elements
+  // will be hidden beneath the backgrounds in firefox
+  .block-text
+    position relative
+
+  .block-large
+    position relative
+    margin 0 auto 16px auto
+    &.solid
+      background #fff
+      box-shadow 0 1px 1px rgba(0,0,0,.18)
+    &.block-no-padding-after
+      margin-bottom 0
+    &.block-no-padding
+      padding 0
+    &.blog
+      // to accommodate tumblr's weird image width
+      @media (min-width 540px)
+        width 540px
+      @media (max-width 539px)
+        max-width 100%
+
+    @media (max-width 940px)
+      flex-direction column
+      .intro
+        margin-right 0
+        width inherit
+      &.blog
+        flex-wrap inherit
+        flex-direction column
+      &.right .body
+        order inherit
+
+    @media (max-width 480px)
+      &.blog:first-child
+        margin-top 32px
+
+    & > .body
+      margin 0
+      padding 32px
+      background-color rgba(0,0,0,.8)
+      color white
+
+      @media (min-width 940px)
+        position absolute
+        width 40%
+        z-index 99
+        bottom 0
+        left 1rem
+
+      & + .visual
+        height 100%
+      h2
+        font-size 2rem
+        text-align center
+        smallcaps()
+        font-style italic
+      h3
+        text-align center
+        color rgba(255,255,255,.7)
+        -webkit-font-smoothing antialiased
+      a
+        color white
+        border-color rgba(255,255,255,.7)
+        &:hover
+          border-color white
+
+    &.right > .body
+      right 1rem
+      left inherit
 
 .block-text
   padding 40px 0
@@ -219,13 +290,13 @@ a
   color white
 
 .block-large
-  displayFlex()
+  display flex
 
   &.block-no-padding-after
     padding-bottom 0
 
   & > .body
-    doFlex 2
+    flex 2
 
     h2
       margin-bottom 0
@@ -240,14 +311,13 @@ a
         margin-bottom 1.5rem
 
   .visual
-    doFlex 3
+    flex 3
 
   & > .visual img
-    min-height 300px
     background-color white
 
   .intro
-    doFlex 5
+    flex 5
     padding 32px
     h2
       smallcaps()
@@ -269,7 +339,7 @@ a
   max-width 33.3333%
 
 .block-small
-  doFlex 1
+  flex 1
   @media (min-width 620px)
     &:not(:last-child)
       margin-right 8px
@@ -305,7 +375,7 @@ a
 
 .subcontent
   padding 32px
-  doFlex 2
+  flex 2
   opacity .7
 
   h2
@@ -361,15 +431,15 @@ a
       font-size .8rem
       font-weight 500
       background-color rgba(0,0,0,.8)
-      fontSmoothing antialiased
+      -webkit-font-smoothing antialiased
 
 .block-with-icons
   ul
     padding 0
     margin-bottom 0
   li
-    displayFlex()
-    alignItems center
+    display flex
+    align-items center
     &:not(:last-child)
       padding 0 0 8px 0px
     i
@@ -388,3 +458,36 @@ a
   border none
   img
     width 185px
+
+    
+
+@media (max-width 940px)
+
+  .blog .blog-posts,
+  .blog .blog-post
+    padding 0
+
+  // http://stackoverflow.com/q/8720931/16308
+  .block-large > .block-small:first-child:nth-last-child(1),
+  .block-large > .block-small:first-child:nth-last-child(1) ~ div,
+  .block-large > .block-small:first-child:nth-last-child(2),
+  .block-large > .block-small:first-child:nth-last-child(2) ~ div
+    max-width inherit !important
+
+@media (min-width: 941px)
+  .blog,
+  #not-found,
+  .block-text,
+  .block-large,
+  .block-full
+    width 940px
+
+@media (max-width: 620px)
+
+  .visual iframe,
+  .blog-item iframe
+    width 100%
+
+  .fb_iframe_widget,
+  .fb_iframe_widget > span
+    width 100% !important

@@ -4,7 +4,10 @@
   "description": "Q42.nl and Q42.com websites",
   "main": "index.js",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "postcss-easy-import": "^1.0.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/Q42/q42.nl/issues"
   },
-  "homepage": "https://github.com/Q42/q42.nl"
+  "homepage": "https://github.com/Q42/q42.nl",
+  "postcss": {
+    "plugins": {
+      "postcss-easy-import": {},
+      "autoprefixer": {"browsers": ["last 2 versions"]}
+    }
+  }
 }

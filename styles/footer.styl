@@ -1,9 +1,9 @@
-@import "0_variables.styl"
+@import "variables.styl"
 
 #footer
   background #222
   color rgba(255,255,255,.9)
-  fontSmoothing antialiased
+  -webkit-font-smoothing antialiased
   font-size .9rem
   font-weight 400
 
@@ -15,7 +15,7 @@
     @media (min-width 941px)
       width 940px
     @media (max-width 620px)
-      flexDirection column
+      flex-direction column
 
   a
     color #88c546
@@ -67,6 +67,7 @@
     p
       font-size .8rem
       color rgba(255,255,255,.7)
+      line-height 2rem
 
     a
       text-decoration none

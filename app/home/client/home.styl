@@ -1,4 +1,4 @@
-@import "../../../styles/0_variables.styl"
+@import "../../../styles/variables.styl"
 
 @media (min-width 620px)
   .block-full:first-child
@@ -34,61 +34,50 @@
 
 .newsitem
   perspective 2000px
-  margin 0 0 40px 0
-  animationFillMode forwards !important
+  animation-fill-mode forwards !important
   animation scaleUp 0.6s cubic-bezier(.34,.91,.62,1.09)
+  border-bottom solid 1px #555
+  // font-family monoFont
 
   for i in (2..10)
     &:nth-child({i})
-      animationDelay 0.1s * i
+      animation-delay 0.1s * i
 
   .col:last-child
-    doFlex 4
+    flex 4
 
   h2
-    text-transform uppercase
-    font-style italic
     font-size 24px
     color qColor
     margin-top 0
 
   a
-    display block
-    displayFlex()
-    justifyContent space-between
-    alignItems center
+    display flex
+    justify-content space-between
+    align-items center
     border none
-    background white
-    border-radius .5rem
+    color white
+    background-color #222
     padding 2rem
-    transition ease .25s
-    transform-style preserve-3d
     font-weight 300
     &:hover
-      transform translateY(-2px) rotateX(5deg)
-      background-image linear-gradient(#fff, #f3f9f3)
-      box-shadow 0 2px 2px rgba(0,0,0,.2)
-      color black
-
-  &.byqer
-    a
-      border solid 2px #69f
-    h2
-      color #69f
+      color white
+      h2
+        text-decoration underline
+        color qColor + #333
 
 
   p
     margin-top 0
 
   .metadata
-    displayFlex()
-    justifyContent space-between
-    alignItems center
-    font-size .9rem
-    color rgba(0,0,0,.7)
+    display flex
+    justify-content space-between
+    align-items center
+    font-size .8rem
+    color rgba(255,255,255,.7)
 
   .author
-    font-size .9rem
     float right
     img
       vertical-align middle
@@ -103,7 +92,7 @@
     margin-left -120px
     margin-right 1rem
     overflow hidden
-    border solid 10px #f0f3ed
+    border solid 10px #333
     border-radius 50%
     img
       object-fit cover

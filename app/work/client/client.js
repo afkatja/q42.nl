@@ -9,24 +9,24 @@ import { Utils } from '../../../lib/utils'
 import { Work, WorkTags, Media } from '../lib/collections'
 import { $Helpers, $OnCreated } from '../../../client/lib/_template'
 
-Meteor.startup(() => {
-  // XXX: get rid of this since it subscribes the whole site to everything
-  Meteor.subscribe('things');
+Template.workItems.onCreated(function() {
+  this.autorun(() => {
+    this.subscribe("work", null, null);
+  });
 });
-
 Template.workItems.helpers({
   workItems() {
     const work = Work.find({"properties.pinned": false}, {
       sort: {"properties.date": -1}
     }).fetch();
-    return _.toArray(_.groupBy(work, (el, i) => ~~(i/3)));
+    return _.chain(work).groupBy( (el, i) => ~~(i/3) ).toArray().value();
   }
 });
 Template.work.helpers({
   imageThumbnail(image) {
     if (!image) return;
     const size = Template.currentData().size;
-    let imageId = size === "large" ? image.main : image.small;
+    const imageId = size === "large" ? image.main : image.small;
     const media = Media.findOne(imageId);
     if (media) return media;
   }

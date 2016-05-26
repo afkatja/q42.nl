@@ -7,23 +7,23 @@ import { $Helpers } from '../../../client/lib/_template'
 
 $Helpers({
   postDate: {
-    prettyDate: function() {
+    prettyDate() {
       date = new Date(this.date.replace(" GMT", "").split(" ").join("T") + "Z");
       return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
     },
-    authorName: function() {
+    authorName() {
       return this.authorName || "Q42";
     }
   },
 
   otherPosts: {
-    post: () => {
+    post() {
       return blogpostTitles.find({
         id: { $ne: FlowRouter.getParam('id') },
         title: { $exists: true }
       }, { limit: 3 }).fetch();
     },
-    firstImage: function() {
+    firstImage() {
       let div = document.createElement('div');
       div.innerHTML = this.intro || this.link_image;
       const img = div.querySelector('img');
@@ -35,7 +35,7 @@ $Helpers({
 Template.blog.helpers({
   tag: () => {
     let tag = FlowRouter.getParam('tag') || "";
-    tag = tag.split('&').filter(function(word){if (word !== 'en') return word;});
+    tag = tag.split('&').filter(word => word !== 'en');
     return tag.length ? tag : ['blog'];
   }
 });

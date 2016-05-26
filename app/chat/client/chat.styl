@@ -1,4 +1,4 @@
-@import "../../../styles/0_variables.styl"
+@import "../../../styles/variables.styl"
 
 #chat-toggle
   background #fff url(assetsUrl + "/images/slacklogo.png") center no-repeat
@@ -14,24 +14,24 @@
   z-index 999
   height 100vh
   box-sizing border-box
-  displayFlex()
-  flexDirection column
-  justifyContent space-between
+  display flex
+  flex-direction column
+  justify-content space-between
   animation slideInChat ease .2s
-  animationFillMode forwards
+  animation-fill-mode forwards
   transform translateX(-100%)
 
   &.hiding
     animation slideOutChat ease .2s
 
   .title
-    displayFlex()
+    display flex
     background #fff url(assetsUrl + "/images/slacklogo.png") 16px center no-repeat
     background-size 64px
     padding 8px 16px 8px 96px
     border-bottom solid 2px #ddd
-    justifyContent space-between
-    alignItems center
+    justify-content space-between
+    align-items center
     h1
       margin 8px
       font-size 16px
@@ -42,21 +42,21 @@
       padding 0 8px
 
   .flex-stretch
-    doFlex 1
+    flex 1
     overflow-y scroll
 
   .flex-end
     padding 16px
     box-sizing border-box
-    displayFlex()
-    justifyContent space-between
+    display flex
+    justify-content space-between
     border-top solid 2px #ddd
 
     input
       font-size 16px
       padding 4px 8px
       border none
-      doFlex 1
+      flex 1
 
     button
       cursor pointer
@@ -66,7 +66,7 @@
       background #0E8FF5
       font-size 14px
       font-weight bold
-      fontSmoothing antialiased
+      -webkit-font-smoothing antialiased
       &:hover, &:focus
         background-color #0E8FF5 + #333
       &:active
