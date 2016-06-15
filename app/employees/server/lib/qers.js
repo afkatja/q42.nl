@@ -22,7 +22,6 @@ currentQers = [
   { name: "Jasper Kaizer", handle:"jasper" },
   { name: "Jeroen Gijsman", handle:"jeroen" },
   { name: "Jimmy Aupperlee", handle:"jimmy" },
-  { name: "Joel de Nes", handle:"joel", imageStatic: "anonymous.jpg", imageAnimated: "anonymous.jpg" },
   { name: "Johan Huijkman", handle:"johan", tumblr: "huijkman" },
   { name: "Kamil Afsar", handle:"kamil" },
   { name: "Kars Veling", handle:"kars" },
