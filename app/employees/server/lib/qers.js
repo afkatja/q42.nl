@@ -1,4 +1,4 @@
-currentQers = [
+const currentQers = [
   { name: "Arian van Gend", handle:"arian" },
   { name: "Arjen van der Ende", handle: "arjen" },
   { name: "Bart Kiers", handle: "bart" },
