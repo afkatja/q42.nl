@@ -48,7 +48,7 @@ Meteor.methods({
       offset = 0;
     }
     Meteor.http.get("https://api.tumblr.com/v2/blog/q42nl.tumblr.com/posts", {
-      params: { api_key: TumblrKey, limit: 20, offset: offset }
+      params: { api_key: Meteor.settings.public.TUMBLR_KEY, limit: 20, offset: offset }
     }, (error, result) => {
       const count = result.data && result.data.response &&
                   result.data.response.posts &&
