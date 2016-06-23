@@ -18,7 +18,7 @@ const roles = {
   "Projectleider": "jasper korjan timd gerard laurens meindert taco silvy braml wouterh",
   "Software Engineer": _.without(
     allHandles,
-    "stef", "cynthia", "suzanne", "corina", "silvy", "ineke"
+    "stef", "cynthia", "suzanne", "corina", "silvy"
   ),
   "Interaction Engineer": "rahul johan roelfjan frank guido richard",
   "Q'er": allHandles,
@@ -39,7 +39,7 @@ const roles = {
 
 // Arbitrary selections
 const arbitrary = {
-  "Girl Code": "ineke katja kristin",
+  "Girl Code": "katja kristin",
   "Codeuur": "lukas thijs kars johan",
   "Speelt nog World of Warcraft": "rahul christiaan richard benjamin tims",
   "Weet wat Spiffy is": "bob timl martin remco lukas sjoerd kars laurens" /* LOL! */,

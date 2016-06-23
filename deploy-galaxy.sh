@@ -1,7 +1,6 @@
 #!/bin/bash
 
 NOW=$(date +"%Y-%m-%d")
-export DEPLOY_HOSTNAME=galaxy.meteor.com
 
 echo "------ Begin Q42.nl and Q42.com deploy! ------"
 
@@ -20,12 +19,12 @@ echo
 # Deploy the site to two different Meteor domains
 # so we have an English and a Dutch website :-)
 echo "--- Deploying to q42.com..."
-meteor deploy www.q42.com --settings config/q42.com/settings.json
+DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy www.q42.com --settings config/q42.com/settings.json
 echo "--- Done deploying to q42.com. Refresh your browser!"
 echo
 
 echo "--- Deploying to q42.nl..."
-meteor deploy www.q42.nl --settings config/q42.nl/settings.json
+DEPLOY_HOSTNAME=eu-west-1.galaxy.meteor.com meteor deploy www.q42.nl --settings config/q42.nl/settings.json
 echo "--- Done deploying to q42.nl. Refresh your browser!"
 echo
 

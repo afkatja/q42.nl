@@ -1,4 +1,4 @@
-currentQers = [
+const currentQers = [
   { name: "Arian van Gend", handle:"arian" },
   { name: "Arjen van der Ende", handle: "arjen" },
   { name: "Bart Kiers", handle: "bart" },
@@ -16,14 +16,12 @@ currentQers = [
   { name: "Guido Bouman", handle:"guido" },
   { name: "Guus Goossens", handle:"guus" },
   { name: "Herman Banken", handle:"herman", web: "http://hermanbanken.nl/" },
-  { name: "Ineke Scheffers", handle:"ineke", tumblr: "fyineke" },
   { name: "Jaap Taal", handle:"jaap" },
   { name: "Jaap Mengers", handle: "jaapm" },
   { name: "Jasper Haggenburg", handle:"jasperh", web: "http://jpunt.nl" },
   { name: "Jasper Kaizer", handle:"jasper" },
   { name: "Jeroen Gijsman", handle:"jeroen" },
   { name: "Jimmy Aupperlee", handle:"jimmy" },
-  { name: "Joel de Nes", handle:"joel", imageStatic: "anonymous.jpg", imageAnimated: "anonymous.jpg" },
   { name: "Johan Huijkman", handle:"johan", tumblr: "huijkman" },
   { name: "Kamil Afsar", handle:"kamil" },
   { name: "Kars Veling", handle:"kars" },

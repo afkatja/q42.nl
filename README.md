@@ -1,4 +1,4 @@
-# Q42.nl & Q42.com
+# Q42.nl & Q42.com [![Link](https://img.shields.io/website-up-down-green-red/https/www.q42.com.svg?maxAge=2592000)](https://www.q42.com) ![](https://img.shields.io/badge/nerds-happy-brightgreen.svg)
 
 We've published the source code to [q42.nl](https://q42.nl) and
 [q42.com](https://q42.com) here for your perusal.
@@ -52,9 +52,11 @@ Kadira, you'll just get console errors. You can get a hold of the keys in the
 
 ## Running the site locally
 
-	meteor --settings config/dev/settings.json
+First install any NPM packages you need:
 
-Or use this script so you don't have to remember the above:
+	meteor npm install
+
+Then run the app:
 
 	./run.sh
 

@@ -34,9 +34,10 @@ $Helpers({
 
 Template.blog.helpers({
   tag: () => {
-    let tag = FlowRouter.getParam('tag') || "";
-    tag = tag.split('&').filter(word => word !== 'en');
-    return tag.length ? tag : ['blog'];
+    let tags = FlowRouter.getParam('tag') || "";
+    return tags
+      ? _.compact(tags.split('&').filter(word => word !== 'en'))
+      : ['blog'];
   }
 });
 
@@ -46,7 +47,9 @@ Template.blogpost.helpers({
 
 Template.blogposts.helpers({
   post: () => blogpostIndex.find({}, {sort: {date: -1}}),
-  readmore: () => Meteor.settings.public.siteVersion === "en" ? "Read more" : "Lees verder"
+  readmore: () => Meteor.settings.public.siteVersion === "en"
+    ? "Read more"
+    : "Lees verder"
 });
 
 Template.pageNav.helpers({

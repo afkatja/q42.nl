@@ -12,7 +12,8 @@ $Helpers({
     randomRenderer() {
       return _.chain([
         "webgl-freak",
-        "webgl-wave"
+        "webgl-wave",
+        "webgl-flap"
       ]).shuffle().first().value();
     }
   }
