@@ -52,9 +52,11 @@ Kadira, you'll just get console errors. You can get a hold of the keys in the
 
 ## Running the site locally
 
-	meteor --settings config/dev/settings.json
+First install any NPM packages you need:
 
-Or use this script so you don't have to remember the above:
+	meteor npm install
+
+Then run the app:
 
 	./run.sh
 
