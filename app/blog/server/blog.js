@@ -48,12 +48,16 @@ Meteor.methods({
       offset = 0;
     }
     Meteor.http.get("https://api.tumblr.com/v2/blog/q42nl.tumblr.com/posts", {
-      params: { api_key: Meteor.settings.public.TUMBLR_KEY, limit: 20, offset: offset }
+      params: {
+        api_key: Meteor.settings.public.TUMBLR_KEY,
+        limit: 20,
+        offset: offset
+      }
     }, (error, result) => {
-      const count = result.data && result.data.response &&
+      const count = result && result.data && result.data.response &&
                   result.data.response.posts &&
                   result.data.response.posts.length;
-      if (result.statusCode == 200 && count) {
+      if (result && result.statusCode == 200 && count) {
         console.log("Importing " + count + " from Tumblr.");
         for (let i = 0; i < count; i++)
           upsertPost(result.data.response.posts[i]);
