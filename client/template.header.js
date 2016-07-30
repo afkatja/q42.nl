@@ -11,7 +11,6 @@ $Helpers({
   header: {
     randomRenderer() {
       return _.chain([
-        "webgl-freak",
         "webgl-wave",
         "webgl-flap",
         "webgl-bouncing"
