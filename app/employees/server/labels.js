@@ -41,7 +41,7 @@ const roles = {
 const arbitrary = {
   "Girl Code": "katja kristin",
   "Codeuur": "lukas thijs kars johan",
-  "Speelt nog World of Warcraft": "rahul richard benjamin tims",
+  "Speelt nog World of Warcraft": "rahul richard benjamin tims ricardo",
   "Weet wat Spiffy is": "bob timl martin remco lukas sjoerd kars laurens" /* LOL! */,
   "Team Wintersport": [
     "lukas", "bob", "chris", "mark", "jeroen", "katja", "stef", "roelfjan",
@@ -49,7 +49,7 @@ const arbitrary = {
     "leonard", "thijs"
   ],
   "Heeft een baard": "rahul richard arian christiaan kamil jasperh marcel braml",
-  "Stokoud": "stef johan",
+  ">= 42": "stef johan",
   "Broers": "tom rob",
   "Tatoeage": "chris jeroen jasperh marcel tomas",
   "Voortgeplant": [
@@ -59,7 +59,7 @@ const arbitrary = {
   ],
   "Rijdt soms op een motor": "stef jeroen arian tom lukas bob jasperh chris",
   "Gaat binnenkort naar Microsoft": "michiel",
-  "Vroeger stewardess geweest": "cynthia",
+  "Voormalig stewardess": "cynthia",
   "Verdient minder dan Jasper": _.without(allHandles, "jasper"),
   "Google IO alumni": [
     "kars", "rahul", "martin", "jaap", "mark", "remco", "kamil", "christiaan",
@@ -79,7 +79,8 @@ const arbitrary = {
   ],
   "Emigrant": "rahul",
   "Gewerkt met de Two Guys": "martin rahul richard",
-  "Troll": "benjamin"
+  "Troll": "benjamin",
+  "Emojinaam": "taco roos",
 };
 
 _.each(_.extend(roles, arbitrary),
