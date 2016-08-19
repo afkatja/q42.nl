@@ -25,6 +25,10 @@
   .qer, img
     width 108px
     height 108px
+    background-color #ccccc6
+
+  .qer:not(.qer-shown) img
+    filter grayscale(1)
 
   @media (max-width 620px)
     img
