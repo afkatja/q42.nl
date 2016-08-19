@@ -1,3 +1,6 @@
+import { Meteor } from 'meteor/meteor'
+import { $ } from 'meteor/jquery'
+
 Meteor.startup( () => {
   $.ajaxSetup({cache: true});
 

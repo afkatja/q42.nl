@@ -29,8 +29,11 @@
   <meta name="author" content="Q42">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <meta name="google-site-verification" content="4jtA9XMK5IejLo5X_qDHcHKLhO7eY5l-JEm5I_PDzAI">
-  <meta name="theme-color" content="#8CD600">
+  <meta name="theme-color" content="#84bc2d">
   <meta name="mobile-web-app-capable" content="yes">
+
+  <link rel="dns-prefetch" href="//storage.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
 
   <meta property="fb:app_id" content="226130564064804">
   <meta property="og:title" content="Q42">
@@ -40,17 +43,27 @@
   <meta property="og:image" content="https://storage.googleapis.com/static.q42.nl/images/q42-logo.png">
   <meta property="og:locale" content="nl_nl">
   <meta property="og:locale:alternate" content="en_us">
-  <meta property="og:url" content="https://q42.nl">
+  <meta property="og:url" content="https://www.q42.nl">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@q42">
 
   <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/static.q42.nl/favicon.ico">
-  <link rel="icon" sizes="192x192" href="https://storage.googleapis.com/static.q42.nl/images/q42-logo.png">
+  <link rel="icon" sizes="512x512" href="https://storage.googleapis.com/static.q42.nl/images/q42-logo.png">
   <link rel="shortcut icon" href="https://storage.googleapis.com/static.q42.nl/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab|RobotoDraft:light,regular,medium,bold|RobotoMono" rel="stylesheet" type="text/css">
   <link href="https://plus.google.com/112933340683830235543" rel="publisher">
   <link rel="alternate" type="application/rss+xml" title="Q42 Weblog" href="https://q42nl.tumblr.com/rss">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="/manifest.webmanifest" type="application/json">
+
+  <style>
+    body {
+      background-color: #84bc2d;
+      font-family: "RobotoDraft", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+    @media (min-width: 480px) { body { border: solid 1rem #84bc2d; } }
+  </style>
 </head>
 
 <template name="main">
@@ -58,14 +71,18 @@
 
   <div id="page" class="{{inverted}}">
 
-    <div id="header">
+    <div id="header" style="background-color: {{portfolioItemBgColor}}">
       {{> Template.dynamic template=header}}
     </div>
 
-    {{#if subsReady}}
+    {{#if isBlog}}
       {{> Template.dynamic template=body}}
     {{else}}
-      {{> loading}}
+      {{#if subsReady}}
+        {{> Template.dynamic template=body}}
+      {{else}}
+        {{> loading}}
+      {{/if}}
     {{/if}}
 
     {{> Template.dynamic template=footer}}
@@ -74,5 +91,7 @@
       {{> chat}}
     {{/if}}
   </div>
+
+  <script src="{{assetsUrl}}/q42.js" defer></script>
 
 </template>

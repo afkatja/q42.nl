@@ -1,0 +1,160 @@
+@import "variables.styl"
+
+#colleagues
+  // make sure mouseovers don't get stuck
+  // underneath following section
+  position relative
+  z-index 99
+  .intro
+    flex 13
+    h2
+      margin-top 0
+  aside
+    flex 5
+  @media (max-width: 480px)
+    .intro + aside
+      display: none
+
+.qers
+  margin 0
+  padding 0
+  display flex
+  flex-flow row wrap
+  list-style none
+
+  .qer, img
+    width 108px
+    height 108px
+    background-color #ccccc6
+
+  .qer:not(.qer-shown) img
+    filter grayscale(1)
+
+  @media (max-width 620px)
+    img
+      width 60px
+      height 60px
+      position absolute
+      top 0
+      left 0
+
+  .qer
+    position relative
+    margin 0 8px 8px 0
+    // opacity 0
+    // animation-fill-mode forwards !important
+    // animation fadeIn .25s ease
+
+    @media (max-width: 620px)
+      width 100%
+      height auto
+      padding-left 70px
+      margin-right 0
+
+    @media (max-width 480px)
+      height 70px
+
+    // for i in (2..64)
+    //   &:nth-child({i})
+    //     animationDelay .02s * i
+
+    &.no-results
+      width auto
+      height auto
+
+    &.qer-shown
+      z-index 1
+
+    .name
+      @media (min-width 621px)
+        position absolute
+        bottom 4px
+        left 4px
+        padding 0 4px
+        font-size 12px
+        font-weight 900
+        line-height 1rem
+        -webkit-font-smoothing antialiased
+        color white
+        text-shadow 0 1px 1px rgba(0,0,0,.5)
+        text-transform uppercase
+        background-color rgba(0,0,0,.3)
+
+      @media (max-width 620px)
+        font 14px titleFont
+        smallcaps()
+        color #000
+
+  .contactData
+    display none
+
+    @media (max-width 620px)
+      position relative
+      display block
+      font-size 12px
+
+  .polaroid
+    position absolute
+    top 0
+    left 0
+    background-color #fff
+    z-index 9
+    padding 10px
+    box-shadow 0px 2px 3px rgba(0,0,0,0.3)
+    animation fadeIn ease .2s
+    animation-fill-mode forwards
+
+    @media (max-width 620px)
+      display none
+
+    img, video
+      width 150px
+      height 150px
+
+    h3
+      font 16px/1.3rem titleFont
+      margin 0
+      text-align center
+
+    .contactData
+      display block
+      margin 0
+      font-size 14px
+      span
+        text-align center
+        display block
+
+  .closePolaroid
+    width 30px
+    height 30px
+    background url(assetsUrl + '/images/closebox.png') no-repeat
+    position absolute
+    top -12px
+    right -12px
+
+.block-facts
+  .body
+    text-align center
+  .counter
+    font-size 78px
+
+#filter-colleagues
+  input
+    font-size 16px
+    border none
+    padding 4px
+
+#filter-options
+  margin inherit
+  padding inherit
+  li
+    display inline-block
+  a
+    font-size smaller
+    opacity 1
+    border-bottom none
+    margin-right 4px
+    &:hover
+      text-decoration none
+    &.selected
+      border-bottom solid 2px qColor

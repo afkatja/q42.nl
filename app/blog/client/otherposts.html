@@ -1,0 +1,18 @@
+<template name="otherPosts">
+  <div class="block-large" id="other-posts">
+    {{#each post}}
+    <div class="block-small">
+      <div class="visual"><a href="/blog/post/{{id}}/{{slug}}">
+        {{#if firstImage}}
+          <img src="{{firstImage}}" alt="">
+        {{else}}
+          <img src="{{assetsUrl}}/images/employees/anonymous.jpg" alt="">
+        {{/if}}
+      </a></div>
+      <div class="body">
+        <h2><a href="/blog/post/{{id}}/{{slug}}">{{title}}</a></h2>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</template>

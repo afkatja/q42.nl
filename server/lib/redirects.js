@@ -1,3 +1,6 @@
+import { Picker } from 'meteor/meteorhacks:picker'
+import { _ } from 'meteor/underscore'
+
 // Use Picker middleware to handle server-side routes
 // per https://github.com/meteorhacks/picker/issues/22
 
@@ -8,7 +11,7 @@ redirect(["/meteor", "/swift", "/interaction-engineering", "/io", "/girlcode"],
 redirect(["/games", "/vacatures"], "q42.com", "q42.nl");
 
 redirect(["/accessibility", "/a11y"], null,
-  "https://q42.com/interaction-engineering");
+  "https://www.q42.com/interaction-engineering");
 redirect(["/adventures"], null, "https://adventures.handcraft.com");
 
 const demoUrls = ["/demos/colorblindnesssimulator", "/demos/contrastcheck"];
@@ -16,8 +19,8 @@ const seeChromeWebStore = "https://chrome.google.com/webstore/detail/see/" +
                           "dkihcccbkkakkbpikjmpnbamkgbjfdcn";
 redirect(demoUrls, null, seeChromeWebStore);
 
-redirect(["/products"], null, "https://q42.com/projects");
-redirect(["/producten"], null, "https://q42.nl/projecten");
+redirect(["/products"], null, "https://www.q42.com/projects");
+redirect(["/producten"], null, "https://www.q42.nl/projecten");
 
 // XXX: redesign magic 'from' argument
 function redirect(urls, from, to) {
@@ -38,11 +41,15 @@ function redirect(urls, from, to) {
 
 Picker.middleware((req, res, next) => {
   const host = req.headers.host;
-  const fullUrl = `https://${host}${req.url}`;
-  if (host.indexOf("www") === 0){
-    console.log(`Route: removeWWW (${req.url})`);
+  const fullUrl = `https://www.${host}${req.url}`;
+  if (
+    Meteor.isProduction &&
+    host !== "localhost:3000" &&
+    host.indexOf("www") === -1
+  ) {
+    console.log(`Route: addWWW (${host}${req.url})`);
     res.writeHead(HTTP_REDIRECT_PERMANENT, {
-      Location: fullUrl.replace("www.", "")
+      Location: fullUrl
     });
     res.end();
   } else {

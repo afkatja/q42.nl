@@ -1,0 +1,495 @@
+@import "variables.styl"
+
+body
+  font 300 1rem bodyFont
+  margin 0
+  background-color qColor
+
+  @media (min-width 480px)
+    border solid 1rem qColor
+
+  @media (max-width: 480px)
+    &.show-mobile-menu
+      overflow-x hidden
+      #page
+        transform translateX(150px)
+
+p, ol, ul
+  line-height 1.5em
+  margin 1.5rem 0
+
+p
+  &:first-child
+    margin-top 0
+  &:last-child
+    margin-bottom 0
+
+iframe
+  border none
+
+address
+  font-style normal
+
+figure
+  margin 1.5rem 0
+
+blockquote
+  margin 0
+  padding 3rem 0
+  border solid 1px #ccc
+  border-left none
+  border-right none
+
+  &:before
+    content: "“"
+    font-size 3rem
+    font-family serifTitleFont
+    float left
+
+  p
+    font-family serifTitleFont
+    padding 0 2.5rem
+
+cite
+  font-style normal
+
+a
+  color #000
+  text-decoration none
+  font-weight 500
+  border-bottom solid 1px rgba(0,0,0,.2)
+  &:hover
+    color qColor
+    border-bottom-color qColor
+
+#page
+  // animation fadeIn ease .25s
+  // animation-fill-mode forwards
+  // opacity 0
+
+  background-color #f0f3ed
+  transition transform .5s cubic-bezier(.87,-.41,.19,1.44)
+  box-shadow -2px 0 20px rgba(0,0,0,.2)
+  @media (min-width 480px)
+    box-shadow none
+
+  &.inverted
+    background-color transparent
+
+#not-found
+  margin 40px auto
+  text-align center
+  background #d33
+  color white
+  border solid 20px white
+  box-shadow 0 0 4px rgba(0,0,0,.4)
+  padding 80px
+  text-transform uppercase
+
+  @media (max-width 480px)
+    padding 32px
+    a
+      border none
+      padding 0
+
+  img
+    width 100%
+  p
+    font-size 24px
+  a
+    border solid 1px white
+    border-radius 25px
+    padding 5px 15px
+    color white
+  h1
+    font-size 72px
+    margin 0
+
+#loading
+  text-align center
+  padding 100px 0
+  height 1000px
+
+  img
+    opacity 0
+    width 128px
+    animation fadeIn ease .2s
+    animation-delay .5s
+    animation-fill-mode forwards
+
+.block-readmore
+  text-align center
+  a
+    color black
+    cursor pointer
+    font-weight 500
+    text-transform uppercase
+    font-family monoFont
+    padding 8px
+    border-bottom none
+    background-color white
+    display inline-block
+    transition transform ease .25s
+    &:active, &:hover
+      transform scale(0.9)
+
+.container
+  @media (max-width 940px)
+    margin 0 auto
+    width 620px
+  @media (max-width 620px)
+    width 460px
+  @media (max-width 480px)
+    width 90%
+    min-width 300px
+
+  // we need to apply position: relative or the elements
+  // will be hidden beneath the backgrounds in firefox
+  .block-text
+    position relative
+
+  .block-large
+    position relative
+    margin 0 auto 16px auto
+    &.solid
+      background #fff
+      box-shadow 0 1px 1px rgba(0,0,0,.18)
+    &.block-no-padding-after
+      margin-bottom 0
+    &.block-no-padding
+      padding 0
+    &.blog
+      // to accommodate tumblr's weird image width
+      @media (min-width 540px)
+        width 540px
+      @media (max-width 539px)
+        max-width 100%
+
+    @media (max-width 940px)
+      flex-direction column
+      .intro
+        margin-right 0
+        width inherit
+      &.blog
+        flex-wrap inherit
+        flex-direction column
+      &.right .body
+        order inherit
+
+    @media (max-width 480px)
+      &.blog:first-child
+        margin-top 32px
+
+    & > .body
+      margin 0
+      padding 32px
+      background-color rgba(0,0,0,.8)
+      color white
+
+      @media (min-width 940px)
+        position absolute
+        width 40%
+        z-index 99
+        bottom 0
+        left 1rem
+
+      & + .visual
+        height 100%
+      h2
+        font-size 2rem
+        text-align center
+        smallcaps()
+        font-style italic
+      h3
+        text-align center
+        color rgba(255,255,255,.7)
+        -webkit-font-smoothing antialiased
+      a
+        color white
+        border-color rgba(255,255,255,.7)
+        &:hover
+          border-color white
+
+    &.right > .body
+      right 1rem
+      left inherit
+
+.block-text
+  padding 40px 0
+  margin 20px 0
+  text-align center
+  margin 0 auto
+  @media (max-width: 480px)
+    padding 0
+  @media all and (max-width: 620px)
+    padding 40px 0
+
+  .inverted h1
+    color white
+  h1
+    font italic 700 80px titleFont
+    margin 0
+    text-transform uppercase
+    color titleColor
+    word-break break-word
+
+    @media (max-width 480px)
+      font-size 3rem
+  h2
+    font-size 3rem
+
+.block-full
+  display block
+  position relative
+  margin 0 auto
+  padding 80px 0
+  text-align center
+
+  @media all and (min-width 480px)
+    &:first-child
+      padding-top 0
+
+  @media all and (max-width: 620px)
+    padding 20px 0
+    display block
+
+    &.right .body
+      margin-left 0
+
+  p
+    font-size 1.3rem
+
+  h1
+    font-size 3rem
+    font-weight 500
+    text-align center
+    margin 0
+  h2
+    font-size 1.5rem
+    font-weight 300
+
+    @media (max-width 480px)
+      font-size 1.2rem
+
+  a
+    color qColor
+
+  blockquote p
+    font-size 2rem
+
+  .tagline
+    text-transform uppercase
+    font-weight 700
+    font-style italic
+    color titleColor
+    @media (min-width 480px)
+      font-size 80px
+
+.inverted .block-full
+  color white
+
+.inverted .tagline
+  color white
+
+.block-large
+  display flex
+
+  &.block-no-padding-after
+    padding-bottom 0
+
+  & > .body
+    flex 2
+
+    h2
+      margin-bottom 0
+      & + h3
+        margin-top 0
+
+    h3
+      font normal 14px/1.5 bodyFont
+      color rgba(0,0,0,.5)
+    p
+      &:last-child
+        margin-bottom 1.5rem
+
+  .visual
+    flex 3
+
+  & > .visual img
+    background-color white
+
+  .intro
+    flex 5
+    padding 32px
+    h2
+      smallcaps()
+      font-style italic
+      margin-top 0
+    h3
+      font-weight normal
+    .visual
+      margin-bottom 15px
+
+.block-large > .body h2
+  margin-top 0
+
+// http://stackoverflow.com/q/8720931/16308
+.block-large > .block-small:first-child:nth-last-child(1),
+.block-large > .block-small:first-child:nth-last-child(1) ~ div,
+.block-large > .block-small:first-child:nth-last-child(2),
+.block-large > .block-small:first-child:nth-last-child(2) ~ div
+  max-width 33.3333%
+
+.block-small
+  flex 0 0 320px
+  @media (min-width 620px)
+    &:not(:last-child)
+      margin-right 8px
+  &.solid
+    @media (min-width 620px)
+      &:not(:last-child)
+        border-right solid 1px rgba(0,0,0,.1)
+  & > .body
+    padding 32px
+    h2
+      font-weight 700
+      font-style italic
+      text-transform uppercase
+      font-size 24px
+      margin 0
+  h2
+    a
+      color black
+  h3
+    font-weight 400
+  .visual img, .visual video
+    object-fit cover
+    height 160px
+
+.inverted .container .block-small
+  color white
+  a
+    color white
+    border-color rgba(255,255,255,0.8)
+    &:hover
+      color qColor
+      border-color qColor
+
+.subcontent
+  padding 32px
+  flex 2
+  opacity .7
+
+  h2
+    text-transform uppercase
+    font-style italic
+    font-weight 700
+    &:first-child
+      margin-top 0
+  a
+    &:hover
+      border-bottom solid 1px qColor
+  ul
+    margin 0
+    padding 0 0 0 1rem
+
+.visual
+  display block
+  border-bottom none
+  position relative
+  width 100%
+  img, video, iframe
+    width 100%
+    vertical-align middle
+  img, video
+    height auto
+  .hover
+    position absolute
+    top 0
+    left 0
+    opacity 0
+    z-index 1
+    transition opacity ease .2s
+  &.swap-hover:hover .hover
+    opacity 1
+
+  &.caption
+    overflow hidden
+
+    @media (min-width 941px)
+      p, img, video
+        transition all .2s cubic-bezier(0,1,.6,1)
+      &:hover
+        p
+          transform translateY(-25px)
+
+    p
+      position absolute
+      z-index 999
+      margin 0
+      width 100%
+      padding 4px 8px
+      color #FFF
+      font-size .8rem
+      font-weight 500
+      background-color rgba(0,0,0,.8)
+      -webkit-font-smoothing antialiased
+
+.block-with-icons
+  ul
+    padding 0
+    margin-bottom 0
+  li
+    display flex
+    align-items center
+    &:not(:last-child)
+      padding 0 0 8px 0px
+    i
+      min-width 40px
+    div
+      margin-left 12px
+  h2
+    margin-top 0
+
+.censored
+  color black
+  background black
+  padding 0 4px
+
+.store-download-button
+  border none
+  img
+    width 185px
+
+
+
+@media (max-width 940px)
+
+  .blog .blog-posts,
+  .blog .blog-post
+    padding 0
+
+  // http://stackoverflow.com/q/8720931/16308
+  .block-large > .block-small:first-child:nth-last-child(1),
+  .block-large > .block-small:first-child:nth-last-child(1) ~ div,
+  .block-large > .block-small:first-child:nth-last-child(2),
+  .block-large > .block-small:first-child:nth-last-child(2) ~ div
+    max-width inherit !important
+
+@media (min-width: 941px)
+  .blog,
+  #not-found,
+  .block-text,
+  .block-large,
+  .block-full
+    width 940px
+
+@media (max-width: 620px)
+
+  .visual iframe,
+  .blog-item iframe
+    width 100%
+
+  .fb_iframe_widget,
+  .fb_iframe_widget > span
+    width 100% !important
