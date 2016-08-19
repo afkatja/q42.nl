@@ -16,8 +16,8 @@ Template.workItems.onCreated(function() {
 });
 Template.workItems.helpers({
   workItems() {
-    const work = Work.find({"properties.pinned": false}, {
-      sort: {"properties.date": -1}
+    const work = Work.find({ "properties.pinned": false }, {
+      sort: { "properties.date": -1 }
     }).fetch();
     return _.chain(work).groupBy( (el, i) => ~~(i/3) ).toArray().value();
   }
@@ -49,7 +49,9 @@ Template.workFilterBlock.helpers({
       return tags.tags;
   },
   isSelected(filter) {
-    const selectedFilter = Template.instance().selectedFilter.get() || FlowRouter.current().params.tag;
+    const selectedFilter =
+      Template.instance().selectedFilter.get()
+      || FlowRouter.current().params.tag;
     return selectedFilter === filter;
   }
 });
