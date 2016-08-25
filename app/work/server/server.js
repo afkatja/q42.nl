@@ -7,11 +7,23 @@ import { Work, Media } from '../lib/collections'
 Meteor.publishComposite("work", (tag, type) => {
   const query = { draft: false };
 
-  const fields = {
-    name: 1, clientName: 1, intro_nl: 1, image: 1,
-    "properties.pinned": 1, slogan_nl: 1
+  const langEn = Meteor.settings.public.siteVersion === "en";
+
+  const alwaysPublishFields = {
+    "properties.pinned": 1,
+    "properties.secret": 1,
+    "properties.date": 1
   };
-  const secretFields = { clientName: 1 };
+  const fields = {
+    name: 1, clientName: 1, image: 1,
+    [langEn ? 'intro' : 'intro_nl']: 1,
+    [langEn ? 'slogan' : 'slogan_nl']: 1,
+    ...alwaysPublishFields
+  };
+  const secretFields = {
+    clientName: 1,
+    ...alwaysPublishFields
+  };
 
   if (tag) {
     Object.assign(query, { "properties.tags": {$in: [tag]} });
