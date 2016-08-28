@@ -11,6 +11,9 @@ const currentQers = [
   { name: "Christiaan Hees", handle:"christiaan", tumblr: "www-chees-info" },
   { name: "Corina Maduro", handle:"corina" },
   { name: "Cynthia Wijntje", handle:"cynthia" },
+  { name: "Djamilla Kruijdenberg", handle: "djamilla", imageStatic: "anonymous.jpg", imageAnimated: "anonymous.jpg" },
+  { name: "Eline Lubberts", handle: "eline", imageStatic: "anonymous.jpg", imageAnimated: "anonymous.jpg" },
+  { name: "Floris van der Breggen", handle: "floris", imageStatic: "anonymous.jpg", imageAnimated: "anonymous.jpg" },
   { name: "Frank Raterink", handle:"frank", web: "http://www.franklabs.nl" },
   { name: "Gerard Dorst", handle:"gerard" },
   { name: "Guido Bouman", handle:"guido" },
@@ -59,7 +62,6 @@ const currentQers = [
   { name: "Tobias Stikvoort", handle:"tobias", imageStatic: "anonymous.jpg", imageAnimated: "anonymous.jpg" },
   { name: "Tom Lokhorst", handle:"tom", web: "http://tom.lokhorst.eu/", tumblr: "tomlokhorst" },
   { name: "Tomas Harkema", handle:"tomas" },
-  { name: "Wouter Horsman", handle:"wouterh" },
   { name: "Wouter van Drunen", handle: "wouter" }
 ];
 

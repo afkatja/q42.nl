@@ -55,7 +55,7 @@ logging@1.1.15
 mdg:seo@1.0.1
 meteor@1.2.17
 meteor-base@1.0.4
-meteorhacks:fast-render@2.14.0
+meteorhacks:fast-render@2.16.0
 meteorhacks:inject-data@2.0.0
 meteorhacks:kadira@2.30.0
 meteorhacks:meteorx@1.4.1
@@ -65,10 +65,10 @@ minifier-js@1.2.14
 minimongo@1.0.17
 modules@0.7.6
 modules-runtime@0.7.6
-mongo@1.1.11
+mongo@1.1.12
 mongo-id@1.0.5
 mongo-livedata@1.0.12
-npm-mongo@1.5.46
+npm-mongo@1.5.48
 oauth@1.1.11
 oauth1@1.1.10
 oauth2@1.1.10

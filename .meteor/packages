@@ -21,7 +21,7 @@ kadira:blaze-layout
 kadira:flow-router
 meteorhacks:fast-render
 meteor-base@1.0.4
-mongo@1.1.11
+mongo@1.1.12
 blaze-html-templates@1.0.4
 session@1.1.6
 jquery@1.11.9
@@ -41,4 +41,4 @@ modules@0.7.6
 mdg:seo
 reywood:publish-composite
 juliancwirko:postcss
-shell-server
+shell-server@0.2.1
