@@ -5,7 +5,7 @@ Meteor.startup(() => {
   _.each(Meteor.settings.private.serviceConfiguration, (settings) => {
     ServiceConfiguration.configurations.upsert(
       { service: settings.service },
-      { settings, loginStyle: "popup" }
+      { ...settings, loginStyle: "popup" }
     );
   });
 });
