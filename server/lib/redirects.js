@@ -7,8 +7,8 @@ import { Picker } from 'meteor/meteorhacks:picker'
 const HTTP_REDIRECT_PERMANENT = 302;
 
 redirect(["/meteor", "/swift", "/interaction-engineering", "/io", "/girlcode", "/jumpstarts"],
-  "q42.nl", "q42.com");
-redirect(["/games", "/vacatures"], "q42.com", "q42.nl");
+  "www.q42.nl", "www.q42.com");
+redirect(["/games", "/vacatures"], "www.q42.com", "www.q42.nl");
 
 redirect(["/accessibility", "/a11y"], null,
   "https://www.q42.com/interaction-engineering");
@@ -38,21 +38,3 @@ function redirect(urls, from, to) {
     }
   });
 }
-
-Picker.middleware((req, res, next) => {
-  const host = req.headers.host;
-  const fullUrl = `https://www.${host}${req.url}`;
-  if (
-    Meteor.isProduction &&
-    host !== "localhost:3000" &&
-    host.indexOf("www") === -1
-  ) {
-    console.log(`Route: addWWW (${host}${req.url})`);
-    res.writeHead(HTTP_REDIRECT_PERMANENT, {
-      Location: fullUrl
-    });
-    res.end();
-  } else {
-    next();
-  }
-});
