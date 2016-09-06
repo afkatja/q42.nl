@@ -5,17 +5,7 @@
       <h1>Werk</h1>
     </header>
 
-    {{> pinnedWork index=0 size="large full-bleed" align="left"}}
-
-    {{> thing id="nl-projecten-intro"}}
-
-    <div class="block-large">
-      {{> pinnedWork index=1 size="small"}}
-      {{> pinnedWork index=2 size="small"}}
-      {{> pinnedWork index=3 size="small"}}
-    </div>
-
-    {{> listAllProjects index=4}}
+    {{> projects pinnedFirst=true intro='nl-projecten-intro'}}
 
     <section id="handcraft">
       <div class="block-large">
