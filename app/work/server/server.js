@@ -11,8 +11,9 @@ Meteor.publishComposite("work", (tag, type) => {
 
   const alwaysPublishFields = {
     "properties.pinned": 1,
+    "properties.pinnedPosition": 1,
     "properties.secret": 1,
-    "properties.date": 1
+    "properties.date": 1,
   };
   const fields = {
     name: 1, clientName: 1, image: 1,
@@ -29,7 +30,7 @@ Meteor.publishComposite("work", (tag, type) => {
     Object.assign(query, { "properties.tags": {$in: [tag]} });
   }
   else if (type) {
-    Object.assign(query, { type: type });
+    Object.assign(query, { type });
   }
 
   const workQueryObject = (fields, secret) => ({

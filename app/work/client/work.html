@@ -1,26 +1,39 @@
 <template name="pinnedWork">
   {{#if item}}
-    {{> workItem item=item size=size align=align}}
+    {{> workItem item=item size=size align=item.properties.pinnedPosition}}
   {{/if}}
 </template>
 
-<template name="listAllProjects">
-  {{#each row in workItems}}
-    {{#if row.[0]}}
-      {{> workItem item=row.[0] size="large"}}
-    {{/if}}
-    {{#if row.[1]}}
+<template name="projects">
+  {{#if pinnedFirst}}
+    {{> pinnedWork index=0 size="large full-bleed" align="left"}}
+  {{/if}}
+
+  {{#if intro}}
+    {{> thing id=intro}}
+  {{/if}}
+
+  {{#if pinnedFirst}}
+  <div class="block-large">
+    {{> pinnedWork index=1 size="small"}}
+    {{> pinnedWork index=2 size="small"}}
+    {{> pinnedWork index=3 size="small"}}
+  </div>
+  {{/if}}
+
+  {{#each fourItems in workItems}}
+    {{> workItem item=fourItems.[0] size="large"}}
     <div class="block-large">
-      {{#each item in row.[1]}}
-        {{> workItem item=item size="small"}}
-      {{/each}}
+      {{> workItem item=fourItems.[1] size="small"}}
+      {{> workItem item=fourItems.[2] size="small"}}
+      {{> workItem item=fourItems.[3] size="small"}}
     </div>
-    {{/if}}
   {{/each}}
 </template>
 
 <template name="workItem">
-  <div class="block-{{size}}{{#if align}} {{align}}{{/if}}">
+  {{#if item}}
+  <div class="block-{{size}} {{positionClass}}">
     <div class="visual caption">
       {{#with imageThumbnail item.image}}
         <img src="{{file}}" alt="">
@@ -41,6 +54,7 @@
       {{/if}}
     </div>
   </div>
+  {{/if}}
 </template>
 
 <template name="workFilterBlock">
