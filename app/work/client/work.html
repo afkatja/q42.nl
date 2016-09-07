@@ -1,3 +1,9 @@
+<template name="specificWork">
+  {{#if item}}
+    {{> workItem item=item size=size align=item.properties.pinnedPosition}}
+  {{/if}}
+</template>
+
 <template name="pinnedWork">
   {{#if item}}
     {{> workItem item=item size=size align=item.properties.pinnedPosition}}
@@ -13,21 +19,13 @@
     {{> thing id=intro}}
   {{/if}}
 
-  {{#if pinnedFirst}}
-  <div class="block-large">
-    {{> pinnedWork index=1 size="small"}}
-    {{> pinnedWork index=2 size="small"}}
-    {{> pinnedWork index=3 size="small"}}
-  </div>
-  {{/if}}
-
   {{#each fourItems in workItems}}
-    {{> workItem item=fourItems.[0] size="large"}}
     <div class="block-large">
       {{> workItem item=fourItems.[1] size="small"}}
       {{> workItem item=fourItems.[2] size="small"}}
       {{> workItem item=fourItems.[3] size="small"}}
     </div>
+    {{> workItem item=fourItems.[0] size="large"}}
   {{/each}}
 </template>
 
@@ -57,6 +55,7 @@
   {{/if}}
 </template>
 
+<!--
 <template name="workFilterBlock">
   {{#if workTags}}
   <aside class="work-tags block-small">
@@ -67,4 +66,4 @@
     </ul>
   </aside>
   {{/if}}
-</template>
+</template> -->

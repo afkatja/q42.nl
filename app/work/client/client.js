@@ -6,7 +6,7 @@ import { ReactiveVar } from 'meteor/reactive-var'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 
 import { Utils } from '../../../lib/utils'
-import { Work, WorkTags, Media } from '../lib/collections'
+import { Work, Media } from '../lib/collections'
 import { $Helpers, $OnCreated } from '../../../client/lib/_template'
 
 const workSortOrder = {"properties.pinned": 1, "properties.date": -1, name: 1};
@@ -20,7 +20,7 @@ Template.projects.onCreated(function() {
 });
 Template.projects.helpers({
   workItems() {
-    const index = Template.currentData().pinnedFirst ? 4 : 0;
+    const index = Template.currentData().pinnedFirst ? 1 : 0;
     const group = (arr, n) => _.toArray(_.groupBy(arr, (el, i) => ~~(i/n)));
     const work = Work.find({}, { sort: workSortOrder }).fetch();
     const pinned = work.filter(x => x.properties.pinned).slice(index);
@@ -107,4 +107,4 @@ Template.specificWork.helpers({
     const name = Template.currentData().name;
     return Work.findOne({ $or: [ { en_name: name }, { name } ] });
   }
-})
+});
