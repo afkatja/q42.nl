@@ -4,7 +4,7 @@ import { _ } from 'meteor/underscore'
 
 import { Work, Media } from '../lib/collections'
 
-Meteor.publishComposite("work", (tag, type) => {
+Meteor.publishComposite("work", (type, category) => {
   const query = { draft: false };
 
   const langEn = Meteor.settings.public.siteVersion === "en";
@@ -26,11 +26,11 @@ Meteor.publishComposite("work", (tag, type) => {
     ...alwaysPublishFields
   };
 
-  if (tag) {
-    Object.assign(query, { "properties.tags": {$in: [tag]} });
-  }
-  else if (type) {
+  if (type) {
     Object.assign(query, { type });
+  }
+  else if (category) {
+    Object.assign(query, { category });
   }
 
   const workQueryObject = (fields, secret) => ({
@@ -64,11 +64,11 @@ Meteor.publishComposite("work", (tag, type) => {
   ];
 });
 
-Meteor.publish("workTags", function() {
-  const work = Work.find({}, {fields: {"properties.tags": 1}}).fetch();
-  const tags = _.map(work, w => w.properties.tags);
-  this.added("work_tags", new Mongo.ObjectID(), {
-    tags: _.compact(_.uniq(_.flatten(tags))).sort()
-  });
-  this.ready();
-});
+// Meteor.publish("workTags", function() {
+//   const work = Work.find({}, {fields: {"properties.tags": 1}}).fetch();
+//   const tags = _.map(work, w => w.properties.tags);
+//   this.added("work_tags", new Mongo.ObjectID(), {
+//     tags: _.compact(_.uniq(_.flatten(tags))).sort()
+//   });
+//   this.ready();
+// });
