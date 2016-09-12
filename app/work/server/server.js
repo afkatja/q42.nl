@@ -48,7 +48,7 @@ Meteor.publishComposite("work", (type, category) => {
             {
               fields: {
                 file: 1, imageWidth: 1, imageHeight: 1,
-                title: 1, description: 1
+                title: 1, description: 1, title_en: 1,
               },
               limit: 2
             }
