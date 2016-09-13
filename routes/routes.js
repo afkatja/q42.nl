@@ -5,7 +5,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router'
 import { BlazeLayout } from 'meteor/kadira:blaze-layout'
 
 import { Utils } from '../lib/utils'
-import { RouteUtils } from './lib/routeutils'
+import { getTemplate, customPage } from './lib/routeutils'
 import { reattachBehavior } from '../lib/attach'
 
 const Triggers = {
@@ -46,15 +46,16 @@ if (Meteor.isClient) {
 FlowRouter.route("/", {
   name: "home",
   action() {
-    renderPage(RouteUtils.getTemplate("home"));
+    renderPage(getTemplate("home"));
   },
   subscriptions() {
     this.register("employeeCount", Meteor.subscribe("employeeCount"));
+    this.register("latestMediumPosts", Meteor.subscribe("latestMediumPosts"));
   }
 });
 
 /*****************************************************************************/
-// CUSTOM BLOG PAGES                                                          /
+// REDIRECT BLOG                                                              /
 /*****************************************************************************/
 FlowRouter.route("/blog/post/:id/:title", {
   name: "blogpostRedirect",
@@ -77,7 +78,33 @@ FlowRouter.route("/blog/:whatever*", {
   }
 })
 
-customPages(this);
+/*****************************************************************************/
+// CUSTOM PAGES                                                               /
+/*****************************************************************************/
+
+customPage({
+  routeName: "meteor",
+  path: "/meteor",
+  tags: ["meteor"]
+});
+
+customPage({
+  routeName: "swift",
+  path: "/swift",
+  tags: ["swift"]
+});
+
+customPage({
+  routeName: "vacatures",
+  path: "/vacatures",
+  tags: ["vacature"]
+});
+
+customPage({
+  routeName: "girlcode",
+  path: "/girlcode",
+  tags: ["girlcode"]
+});
 
 /*****************************************************************************/
 // ANY OTHER PAGE                                                             /
@@ -85,7 +112,7 @@ customPages(this);
 FlowRouter.route("/:page", {
   name: "page",
   action(params) {
-    const tmpl = RouteUtils.getTemplate(params.page);
+    const tmpl = getTemplate(params.page);
     if (tmpl) {
       renderPage(tmpl);
     } else {
