@@ -56,6 +56,27 @@ FlowRouter.route("/", {
 /*****************************************************************************/
 // CUSTOM BLOG PAGES                                                          /
 /*****************************************************************************/
+FlowRouter.route("/blog/post/:id/:title", {
+  name: "blogpostRedirect",
+  action() {
+    const title = encodeURIComponent(FlowRouter.getParam('title'));
+    window.location.href = `https://medium.com/q42bv/search?q=${title}`;
+  }
+});
+FlowRouter.route("/blog/tagged/:tag", {
+  name: "blogTagRedirect",
+  action() {
+    const tag = FlowRouter.getParam('tag');
+    window.location.href = `https://medium.com/q42bv/tagged/${tag}`;
+  }
+});
+FlowRouter.route("/blog/:whatever*", {
+  name: "blogRedirect",
+  action() {
+    window.location.href = 'https://medium.com/q42bv';
+  }
+})
+
 customBlogPages(this);
 
 /*****************************************************************************/
