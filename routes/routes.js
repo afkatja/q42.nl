@@ -16,7 +16,6 @@ const Triggers = {
       reattachBehavior();
     }, 300);
   },
-  checkForNewPosts: () => Meteor.call("checkTumblr"),
   set404StatusCode: () => {
     const $meta = $("<meta>");
     $meta.attr('name', 'prerender-status-code');
@@ -39,9 +38,6 @@ if (Meteor.isClient) {
   Template.registerHelper("subsReady", (name) => {
     return name ? FlowRouter.subsReady(name) : FlowRouter.subsReady();
   });
-  Template.registerHelper("isBlog", () => {
-    return FlowRouter.getRouteName() === "blog";
-  });
 }
 
 /*****************************************************************************/
@@ -53,64 +49,7 @@ FlowRouter.route("/", {
     renderPage(RouteUtils.getTemplate("home"));
   },
   subscriptions() {
-    const englishOnly = Meteor.settings.public.siteVersion === "en";
-    this.register("postsWithAuthors",
-      Meteor.subscribe("postsWithAuthors", englishOnly));
     this.register("employeeCount", Meteor.subscribe("employeeCount"));
-  }
-});
-
-/*****************************************************************************/
-// BLOG                                                                       /
-/*****************************************************************************/
-const blogOverview = FlowRouter.group({
-  prefix: "/blog",
-  triggersEnter: [Triggers.checkForNewPosts]
-});
-blogOverview.route("/", {
-  name: "blog",
-  action() { renderPage("blog"); },
-  subscriptions() {
-    this.register("allPosts", Meteor.subscribe("blogpostIndex", 1));
-    this.register("pages", Meteor.subscribe("pagesByTag", ""));
-  }
-});
-blogOverview.route("/page/:pageNum", {
-  name: "blog",
-  action() { renderPage("blog"); },
-  subscriptions(params) {
-    const pageNum = parseInt(params.pageNum);
-    this.register("allPosts", Meteor.subscribe("blogpostIndex", pageNum));
-    this.register("pages", Meteor.subscribe("pagesByTag", ""));
-  }
-});
-blogOverview.route("/tagged/:tag", {
-  name: "blog",
-  action() { renderPage("blog"); },
-  subscriptions(params) {
-    const tag = params.tag;
-    this.register("allPosts", Meteor.subscribe("blogpostIndex", 1, tag));
-    this.register("pages", Meteor.subscribe("pagesByTag", tag || ""));
-  }
-});
-blogOverview.route("/tagged/:tag/page/:pageNum", {
-  name: "blog",
-  action() { renderPage("blog"); },
-  subscriptions(params) {
-    const tag = params.tag;
-    const pageNum = params.pageNum;
-    this.register("allPosts", Meteor.subscribe("blogpostIndex", pageNum, tag));
-    this.register("pages", Meteor.subscribe("pagesByTag", tag || ""));
-  }
-});
-FlowRouter.route("/blog/post/:id/:title?", {
-  name: "blogpost",
-  action(){ renderPage("blogpost"); },
-  triggersEnter: [Triggers.checkForNewPosts],
-  subscriptions(params) {
-    const id = parseInt(params.id);
-    this.register("blogpost", Meteor.subscribe("blogpostFull", id));
-    this.register("allTitles", Meteor.subscribe("blogpostTitles", 1));
   }
 });
 
