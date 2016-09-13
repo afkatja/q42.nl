@@ -77,7 +77,7 @@ FlowRouter.route("/blog/:whatever*", {
   }
 })
 
-customBlogPages(this);
+customPages(this);
 
 /*****************************************************************************/
 // ANY OTHER PAGE                                                             /

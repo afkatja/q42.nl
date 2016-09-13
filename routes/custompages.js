@@ -5,9 +5,9 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout'
 
 import { RouteUtils } from './lib/routeutils'
 
-customBlogPages = (router) => {
+customPages = (router) => {
 
-  customPageWithBlogTags = (obj) => {
+  customPage = (obj) => {
     FlowRouter.route(obj.path, {
       name: obj.routeName,
       triggersEnter: [() => Meteor.call("checkTumblr")],
@@ -21,25 +21,25 @@ customBlogPages = (router) => {
     });
   };
 
-  customPageWithBlogTags({
+  customPage({
     routeName: "meteor",
     path: "/meteor",
     tags: ["meteor"]
   });
 
-  customPageWithBlogTags({
+  customPage({
     routeName: "swift",
     path: "/swift",
     tags: ["swift"]
   });
 
-  customPageWithBlogTags({
+  customPage({
     routeName: "vacatures",
     path: "/vacatures",
     tags: ["vacature"]
   });
 
-  customPageWithBlogTags({
+  customPage({
     routeName: "girlcode",
     path: "/girlcode",
     tags: ["girlcode"]
