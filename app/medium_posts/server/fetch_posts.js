@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor'
 import { Mongo } from 'meteor/mongo'
 import { MediumPosts } from '../lib/shared'
 
-const latestPostsUrl = 'https://medium.com/q42bv/latest?format=json';
+const latestPostsUrl = 'https://medium.com/q42bv/tagged/news?format=json';
 
 const MEDIUM_SCRIPT_EXECUTION_PREVENTION = '])}while(1);</x>';
 
