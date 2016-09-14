@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor'
 
-// Blog admins
 var admins = ['sjoerd@q42.nl', 'rahul@q42.nl', 'chris@q42.nl'];
 Meteor.publish("allUserData", function () {
   Meteor.users.update({

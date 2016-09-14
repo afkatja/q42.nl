@@ -7,4 +7,5 @@ FastRender.onAllRoutes(function() {
 
 FastRender.route( "/", function() {
   this.subscribe("employeeCount");
+  this.subscribe("latestMediumPosts");
 });
