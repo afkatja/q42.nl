@@ -5,7 +5,7 @@
 
 
 http@1.2.10
-stylus@2.513.6
+stylus@2.513.7
 reactive-dict@1.1.8
 meteorhacks:kadira
 reactive-var@1.0.11
